@@ -1,0 +1,24 @@
+/* Directivas de Tailwind CSS: fundamentales para que Tailwind funcione */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Importar la fuente Inter de Google Fonts para un diseño moderno y legible */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* Estilos globales para el body */
+body {
+  margin: 0; /* Elimina el margen por defecto del navegador */
+  font-family: 'Inter', sans-serif; /* Aplica la fuente Inter a toda la aplicación */
+  -webkit-font-smoothing: antialiased; /* Mejorar el suavizado de la fuente en WebKit (Chrome, Safari) */
+  -moz-osx-font-smoothing: grayscale; /* Mejorar el suavizado de la fuente en Firefox */
+}
+
+/* Puedes añadir estilos CSS personalizados aquí si necesitas algo que Tailwind no cubra fácilmente */
+/* Por ejemplo, animaciones complejas o estilos muy específicos que no sean componentes reutilizables */
+
+/* Clave para asegurar que la aplicación React ocupe toda la altura de la ventana */
+html, body, #root {
+  height: 100%;
+}
+
