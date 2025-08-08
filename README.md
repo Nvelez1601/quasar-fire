@@ -1,6 +1,10 @@
-# 🛰️ Sistema de Detección Galáctica
+# 🛰️ Quasar Fire
 
-¡Bienvenido al Sistema de Detección Galáctica! Esta aplicación te permite descifrar mensajes y localizar la posición de una fuente de señal basándose en datos recibidos de múltiples satélites, utilizando algoritmos de trilateración y reconstrucción de mensajes.
+¡Bienvenido al Quasar Fire! Esta aplicación te permite descifrar mensajes y localizar la posición de una fuente de señal basándose en datos recibidos de múltiples satélites, utilizando algoritmos de trilateración y reconstrucción de mensajes.
+
+[img](https://i.imgur.com/wMZ5Hjt.png)
+
+[img](https://i.imgur.com/HQ0khcV.png)
 
 La aplicación ofrece dos modos principales:
 * **Decifrado en Lote (`/topsecret`):** Envía todos los datos de los satélites en una sola solicitud.
@@ -74,91 +78,6 @@ Para poner en marcha este proyecto, necesitas configurar tanto el backend de Fla
 
 ---
 
-### Configuración del Frontend (React)
-
-1.  **Crea un nuevo proyecto React (si no lo tienes ya):**
-    Abre una **nueva terminal** (diferente a la que corre Flask) y ejecuta:
-    ```bash
-    npx create-react-app fiverr-space-comm-frontend
-    cd fiverr-space-comm-frontend
-    ```
-
-2.  **Instala las dependencias de Node.js:**
-    Necesitarás Tailwind CSS, Lucide React y las librerías de partículas.
-    ```bash
-    npm install -D tailwindcss postcss autoprefixer
-    npm install lucide-react tsparticles tsparticles-slim react-particles
-    ```
-    (Si usas `yarn`, reemplaza `npm install` por `yarn add`).
-
-3.  **Configura Tailwind CSS:**
-    * **Inicializa Tailwind:**
-        ```bash
-        npx tailwindcss init -p
-        ```
-    * **Modifica `tailwind.config.js`:**
-        Abre `tailwind.config.js` y asegúrate de que el `content` incluya los archivos de tu proyecto React:
-        ```javascript
-        /** @type {import('tailwindcss').Config} */
-        module.exports = {
-          content: [
-            "./src/**/*.{js,jsx,ts,tsx}",
-          ],
-          theme: {
-            extend: {
-              fontFamily: {
-                inter: ['Inter', 'sans-serif'],
-              },
-              keyframes: {
-                fadeIn: {
-                  '0%': { opacity: '0', transform: 'translateY(20px)' },
-                  '100%': { opacity: '1', transform: 'translateY(0)' },
-                },
-                fadeInUp: {
-                  '0%': { opacity: '0', transform: 'translateY(20px)' },
-                  '100%': { opacity: '1', transform: 'translateY(0)' },
-                },
-              },
-              animation: {
-                'fade-in': 'fadeIn 0.5s ease-out forwards',
-                'fade-in-up': 'fadeInUp 0.3s ease-out forwards',
-              },
-            },
-          },
-          plugins: [],
-        }
-        ```
-    * **Añade las directivas de Tailwind en `src/index.css`:**
-        Abre `src/index.css` (o crea uno si no existe) y añade lo siguiente al principio:
-        ```css
-        @tailwind base;
-        @tailwind components;
-        @tailwind utilities;
-
-        @import url('[https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap](https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap)');
-
-        body {
-          margin: 0;
-          font-family: 'Inter', sans-serif;
-          -webkit-font-smoothing: antialiased;
-          -moz-osx-font-smoothing: grayscale;
-        }
-        ```
-
-4.  **Copia el código de la aplicación React:**
-    Reemplaza el contenido de `src/App.js` con el código proporcionado en la última respuesta.
-
-5.  **Asegúrate de que `public/index.html` tenga un `<div id="root"></div>`:**
-    El archivo `public/index.html` de tu proyecto React debe contener un `div` con `id="root"`. Aquí es donde se montará tu aplicación.
-
-6.  **Inicia la aplicación React:**
-    Desde la raíz de tu proyecto React (donde está `package.json`):
-    ```bash
-    npm start
-    ```
-    Esto abrirá la aplicación en tu navegador, generalmente en `http://localhost:3000`.
-
----
 
 ## 🧪 Pruebas del Backend (con `curl`)
 
