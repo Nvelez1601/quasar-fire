@@ -2,9 +2,9 @@
 
 ¡Bienvenido al Quasar Fire! Esta aplicación te permite descifrar mensajes y localizar la posición de una fuente de señal basándose en datos recibidos de múltiples satélites, utilizando algoritmos de trilateración y reconstrucción de mensajes.
 
-[img](https://i.imgur.com/wMZ5Hjt.png)
+![img](https://i.imgur.com/wMZ5Hjt.png)
 
-[img](https://i.imgur.com/HQ0khcV.png)
+![img](https://i.imgur.com/HQ0khcV.png)
 
 La aplicación ofrece dos modos principales:
 * **Decifrado en Lote (`/topsecret`):** Envía todos los datos de los satélites en una sola solicitud.
