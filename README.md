@@ -32,13 +32,12 @@ La aplicación ofrece dos modos principales:
 * **Flask-CORS 🔗:** Extensión para manejar las políticas de *Cross-Origin Resource Sharing* (CORS), permitiendo la comunicación con el frontend.
 
 ### Frontend (Interfaz de Usuario)
-* **React ⚛️:** Librería de JavaScript para construir interfaces de usuario interactivas.
-* **Tailwind CSS 🎨:** Framework CSS para un desarrollo rápido y un diseño altamente personalizable y responsivo.
-* **Lucide React 💡:** Colección de iconos modernos y ligeros.
-* **`react-particles` / `tsparticles-slim` 💫:** Librerías para generar el fondo interactivo de partículas.
+* **HTML5 📄:** Estructura de la página web.
+* **JavaScript (ES6+) 💻:** Lógica interactiva, manejo de la API y control de la interfaz.
+* **CSS3 🎨:** Estilos y efectos visuales, incluyendo animaciones y un diseño responsivo, con una paleta de colores Star Wars.
+* **`react-particles`  💫:** Librería para generar el fondo interactivo de partículas (estilo galaxia).
 
 ---
-
 ## 🚀 Cómo Empezar
 
 Para poner en marcha este proyecto, necesitas configurar tanto el backend de Flask como el frontend de React.
