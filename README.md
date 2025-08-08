@@ -35,7 +35,7 @@ La aplicación ofrece dos modos principales:
 * **HTML5 📄:** Estructura de la página web.
 * **JavaScript (ES6+) 💻:** Lógica interactiva, manejo de la API y control de la interfaz.
 * **CSS3 🎨:** Estilos y efectos visuales, incluyendo animaciones y un diseño responsivo, con una paleta de colores Star Wars.
-* **`react-particles`  💫:** Librería para generar el fondo interactivo de partículas (estilo galaxia).
+* **`Particles.js`  💫:** Librería para generar el fondo interactivo de partículas (estilo galaxia).
 
 ---
 ## 🚀 Cómo Empezar
