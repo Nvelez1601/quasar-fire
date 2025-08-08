@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galactic Beacon Decoder</title>
+    <!-- Enlace a Font Awesome para los iconos profesionales -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Enlace a tu archivo CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Contenedor para el fondo de partículas -->
+    <div id="particles-js"></div>
+
+    <!-- Contenedor principal de la aplicación, ahora con capacidad de scroll -->
+    <div class="main-container">
+        <header class="app-header">
+            <i class="fas fa-satellite-dish header-icon"></i>
+            <h1>Galactic Beacon Decoder</h1>
+            <p>Descifra mensajes y localiza la fuente de la señal</p>
+        </header>
+
+        <!-- Selector de modo (Lote o Fragmentado) -->
+        <div class="mode-selector">
+            <button id="mode-topsecret" class="mode-button active">
+                <i class="fas fa-share-alt-square"></i> Decifrar en Lote
+            </button>
+            <button id="mode-topsecret-split" class="mode-button">
+                <i class="fas fa-dice-d6"></i> Decifrar Fragmentado
+            </button>
+        </div>
+
+        <!-- Formulario para el modo TopSecret (Lote) -->
+        <section id="topsecret-section" class="form-section active">
+            <h2><i class="fas fa-info-circle"></i> Datos de Satélites (Lote)</h2>
+            <form id="topsecret-form">
+                <!-- Kenobi -->
+                <div class="satellite-input-group">
+                    <label for="kenobi-distance"><i class="fas fa-crosshairs"></i> Kenobi Distancia:</label>
+                    <input type="number" id="kenobi-distance" placeholder="Distancia a Kenobi" step="0.01" required>
+                    <label for="kenobi-message"><i class="fas fa-comment-dots"></i> Mensaje:</label>
+                    <input type="text" id="kenobi-message" placeholder="Mensaje (palabras separadas por espacio)" required>
+                </div>
+                <!-- Skywalker -->
+                <div class="satellite-input-group">
+                    <label for="skywalker-distance"><i class="fas fa-crosshairs"></i> Skywalker Distancia:</label>
+                    <input type="number" id="skywalker-distance" placeholder="Distancia a Skywalker" step="0.01" required>
+                    <label for="skywalker-message"><i class="fas fa-comment-dots"></i> Mensaje:</label>
+                    <input type="text" id="skywalker-message" placeholder="Mensaje (palabras separadas por espacio)" required>
+                </div>
+                <!-- Sato -->
+                <div class="satellite-input-group">
+                    <label for="sato-distance"><i class="fas fa-crosshairs"></i> Sato Distancia:</label>
+                    <input type="number" id="sato-distance" placeholder="Distancia a Sato" step="0.01" required>
+                    <label for="sato-message"><i class="fas fa-comment-dots"></i> Mensaje:</label>
+                    <input type="text" id="sato-message" placeholder="Mensaje (palabras separadas por espacio)" required>
+                </div>
+                
+                <button type="submit" id="submit-topsecret" class="submit-btn">
+                    <i class="fas fa-sync-alt loading-icon"></i> <span class="button-text">Decifrar Mensaje</span>
+                </button>
+            </form>
+        </section>
+
+        <!-- Formulario para el modo TopSecret Split (Fragmentado) -->
+        <section id="topsecret-split-section" class="form-section hidden">
+            <h2><i class="fas fa-code-branch"></i> Enviar Datos por Satélite</h2>
+            <form id="topsecret-split-form">
+                <div class="satellite-split-group">
+                    <label for="split-satellite-name"><i class="fas fa-broadcast-tower"></i> Satélite:</label>
+                    <select id="split-satellite-name">
+                        <option value="kenobi">Kenobi</option>
+                        <option value="skywalker">Skywalker</option>
+                        <option value="sato">Sato</option>
+                    </select>
+                    <label for="split-distance"><i class="fas fa-crosshairs"></i> Distancia:</label>
+                    <input type="number" id="split-distance" placeholder="Distancia" step="0.01" required>
+                    <label for="split-message"><i class="fas fa-comment-dots"></i> Mensaje:</label>
+                    <input type="text" id="split-message" placeholder="Mensaje (palabras separadas por espacio)" required>
+                </div>
+                <button type="submit" id="add-split-data" class="submit-btn">
+                    <i class="fas fa-paper-plane loading-icon"></i> <span class="button-text">Enviar Datos Satélite</span>
+                </button>
+            </form>
+
+            <div class="split-status">
+                <h3><i class="fas fa-check-circle"></i> Estado de Recepción:</h3>
+                <ul>
+                    <li id="status-kenobi"><i class="fas fa-times-circle status-icon-fail"></i> Kenobi: Esperando datos</li>
+                    <li id="status-skywalker"><i class="fas fa-times-circle status-icon-fail"></i> Skywalker: Esperando datos</li>
+                    <li id="status-sato"><i class="fas fa-times-circle status-icon-fail"></i> Sato: Esperando datos</li>
+                </ul>
+                <button id="get-split-result" class="submit-btn disabled" disabled>
+                    <i class="fas fa-sync-alt loading-icon"></i> <span class="button-text">Obtener Mensaje Final</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Sección de Resultados -->
+        <section id="results-section" class="results-container hidden">
+            <h2><i class="fas fa-map-marker-alt"></i> Resultado Descifrado</h2>
+            <p><span class="result-label">Posición:</span> <span id="result-position"></span></p>
+            <p><span class="result-label">Mensaje:</span> "<span id="result-message"></span>"</p>
+        </section>
+    </div>
+
+    <!-- Contenedor para mensajes Toast (notificaciones) -->
+    <div id="toast-container"></div>
+
+    <!-- Script de particles.js para el fondo animado -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <!-- Tu archivo JavaScript principal -->
+    <script src="script.js"></script>
+</body>
+</html>

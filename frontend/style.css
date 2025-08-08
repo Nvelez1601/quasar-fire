@@ -1,0 +1,475 @@
+/* Importar la fuente 'Orbitron' para un toque futurista, alusivo a Star Wars */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap');
+
+/* Variables CSS para una paleta de colores Star Wars */
+:root {
+    --primary-color: #00BFFF; /* Un azul Jedi vibrante para acentos y elementos clave */
+    --secondary-color: #0A0A0A; /* Negro profundo del espacio */
+    --card-bg-color: #1A1A1A; /* Negro ligeramente menos profundo para los contenedores */
+    --text-color-light: #F0F0F0; /* Blanco espacial para texto principal */
+    --text-color-dark: #AAAAAA; /* Gris metálico para texto secundario */
+    --border-color: #444444; /* Gris oscuro para bordes y separadores */
+    --success-color: #00FF00; /* Verde de sable de luz Jedi para éxito */
+    --error-color: #FF0000; /* Rojo de sable de luz Sith para error */
+    --shadow-light: rgba(0, 0, 0, 0.4); /* Sombra ligera */
+    --shadow-heavy: rgba(0, 0, 0, 0.7); /* Sombra más pronunciada */
+    --scroll-thumb-color: var(--primary-color); /* Color de la barra de desplazamiento */
+    --scroll-track-color: #333333; /* Color de la pista de la barra de desplazamiento */
+}
+
+/* Estilos generales del cuerpo */
+body {
+    font-family: 'Orbitron', sans-serif; /* Aplicar la fuente Orbitron */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--secondary-color);
+    color: var(--text-color-light);
+    margin: 0;
+    overflow: hidden; /* Oculta el scroll principal del body, el scroll será en el main-container */
+    position: relative; /* Necesario para el posicionamiento absoluto de partículas */
+}
+
+/* Contenedor del fondo de partículas */
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1; /* Asegura que las partículas estén detrás del contenido */
+}
+
+/* Contenedor principal de la aplicación con scrollbar */
+.main-container {
+    position: relative;
+    z-index: 2; /* Asegura que el contenido esté encima de las partículas */
+    background-color: var(--card-bg-color);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px var(--shadow-heavy);
+    text-align: center;
+    max-width: 800px;
+    width: 90%;
+    border: 1px solid var(--border-color);
+    animation: fadeIn 1s ease-out forwards; /* Animación de entrada */
+
+    /* Propiedades para el Scrollbar */
+    max-height: 90vh; /* Altura máxima para que aparezca el scroll */
+    overflow-y: auto; /* Habilita el scroll vertical cuando el contenido excede el max-height */
+    padding-right: 15px; /* Espacio para la barra de desplazamiento */
+    box-sizing: border-box; /* Incluir padding en el ancho/alto total */
+}
+
+/* Estilos de la barra de desplazamiento (personalizado para navegadores Webkit) */
+.main-container::-webkit-scrollbar {
+    width: 12px; /* Ancho de la barra de desplazamiento vertical */
+}
+
+.main-container::-webkit-scrollbar-track {
+    background: var(--scroll-track-color); /* Color del fondo de la pista */
+    border-radius: 10px; /* Bordes redondeados de la pista */
+}
+
+.main-container::-webkit-scrollbar-thumb {
+    background-color: var(--scroll-thumb-color); /* Color del "pulgar" (el elemento que se arrastra) */
+    border-radius: 10px; /* Bordes redondeados del pulgar */
+    border: 3px solid var(--scroll-track-color); /* Borde alrededor del pulgar */
+}
+
+.main-container::-webkit-scrollbar-thumb:hover {
+    background-color: #00A3CC; /* Un azul ligeramente más oscuro al pasar el ratón */
+}
+
+/* Encabezado de la aplicación */
+.app-header {
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.app-header h1 {
+    font-size: 2.8em;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-weight: 700;
+    text-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color); /* Efecto de brillo de sable de luz */
+}
+
+.app-header p {
+    font-size: 1.1em;
+    color: var(--text-color-dark);
+}
+
+.header-icon {
+    font-size: 3.5em;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+/* Selector de modo (botones) */
+.mode-selector {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.mode-button {
+    background-color: var(--secondary-color);
+    color: var(--text-color-dark);
+    border: 2px solid var(--primary-color);
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-size: 1.05em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 10px var(--shadow-light);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.mode-button:hover {
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px var(--shadow-heavy);
+}
+
+.mode-button.active {
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
+    box-shadow: 0 6px 15px var(--shadow-heavy);
+    transform: translateY(-2px);
+    text-shadow: 0 0 5px var(--text-color-light);
+}
+
+.mode-button i {
+    font-size: 1.1em;
+}
+
+/* Secciones de formulario */
+.form-section {
+    background-color: var(--card-bg-color);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border-color);
+    margin-bottom: 25px;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.form-section.hidden {
+    opacity: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    margin-bottom: 0;
+}
+
+.form-section h2 {
+    color: var(--primary-color);
+    font-size: 1.8em;
+    margin-top: 0;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.form-section h2 i {
+    font-size: 1.2em;
+}
+
+/* Grupos de entrada de satélites */
+.satellite-input-group, .satellite-split-group {
+    display: grid;
+    grid-template-columns: auto 1fr; /* Etiquetas auto, inputs 1 fracción */
+    gap: 10px 20px;
+    margin-bottom: 20px;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px dashed var(--border-color);
+}
+
+.satellite-input-group label, .satellite-split-group label {
+    font-weight: 500;
+    color: var(--text-color-dark);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.satellite-input-group input, .satellite-split-group input,
+.satellite-split-group select {
+    background-color: #333333; /* Fondo de input más oscuro */
+    color: var(--text-color-light);
+    border: 1px solid var(--border-color);
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    width: auto; /* Ajuste automático para los campos de entrada */
+}
+
+.satellite-input-group input::placeholder, .satellite-split-group input::placeholder {
+    color: var(--text-color-dark);
+}
+
+.satellite-input-group input:focus, .satellite-split-group input:focus,
+.satellite-split-group select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 191, 255, 0.4); /* Brillo azul al enfocar */
+    outline: none;
+}
+
+/* Botones de envío */
+.submit-btn {
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
+    border: none;
+    padding: 15px 30px;
+    border-radius: 50px; /* Forma de píldora */
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px var(--shadow-light);
+    display: inline-flex; /* Para alinear el icono y el texto */
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+    width: auto; /* Ajuste automático */
+    min-width: 200px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.submit-btn:hover:not([disabled]) {
+    background-color: #00A3CC; /* Un azul ligeramente más oscuro en hover */
+    transform: translateY(-5px); /* Efecto de "levantar" */
+    box-shadow: 0 8px 20px var(--shadow-heavy);
+}
+
+.submit-btn:active:not([disabled]) {
+    transform: translateY(0); /* Efecto de "presionar" */
+    box-shadow: 0 2px 5px var(--shadow-light);
+}
+
+.submit-btn[disabled] {
+    background-color: #444444; /* Gris oscuro para botones deshabilitados */
+    cursor: not-allowed;
+    box-shadow: none;
+    opacity: 0.7;
+}
+
+/* Icono de carga giratorio */
+.loading-icon {
+    display: none; /* Oculto por defecto */
+}
+.submit-btn.loading .loading-icon {
+    display: inline-block; /* Muestra el icono cuando el botón tiene la clase 'loading' */
+    animation: spin 1s linear infinite; /* Animación de giro */
+}
+.submit-btn.loading .button-text {
+    display: none; /* Oculta el texto cuando está cargando */
+}
+
+/* Estado de los satélites en el modo split */
+.split-status {
+    margin-top: 25px;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px dashed var(--border-color);
+}
+
+.split-status h3 {
+    color: var(--primary-color);
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.split-status ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.split-status li {
+    background-color: #333333; /* Fondo para cada estado de satélite */
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1em;
+    color: var(--text-color-light);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border-left: 5px solid transparent; /* Borde para indicar estado */
+}
+
+.status-icon-ok {
+    color: var(--success-color); /* Verde Jedi */
+}
+
+.status-icon-fail {
+    color: var(--error-color); /* Rojo Sith */
+}
+
+.split-status li.status-success {
+    border-left-color: var(--success-color);
+}
+
+.split-status li.status-error {
+    border-left-color: var(--error-color);
+}
+
+/* Contenedor de resultados */
+.results-container {
+    background-color: var(--success-color); /* Fondo verde Jedi para resultados */
+    color: var(--text-color-light);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    animation: fadeInScale 0.8s ease-out forwards; /* Animación de aparición */
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Sombra de texto para contraste */
+}
+
+.results-container h2 {
+    color: var(--text-color-light);
+    font-size: 2em;
+    margin-bottom: 15px;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5); /* Brillo para el título */
+}
+
+.results-container p {
+    font-size: 1.3em;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.results-container p:last-child {
+    margin-bottom: 0;
+}
+
+.result-label {
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Contenedor de Toast (Notificaciones) */
+#toast-container {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000; /* Asegura que esté por encima de todo */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.toast-message {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: slideInUp 0.5s ease-out forwards;
+    opacity: 0; /* Oculto por defecto */
+}
+
+.toast-message.success {
+    background-color: var(--success-color); /* Verde Jedi */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.toast-message.error {
+    background-color: var(--error-color); /* Rojo Sith */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes slideInUp {
+    from { opacity: 0; transform: translateY(50px) translateX(-50%); }
+    to { opacity: 1; transform: translateY(0) translateX(-50%); }
+}
+
+/* Media Queries para responsividad */
+@media (max-width: 768px) {
+    .main-container {
+        padding: 20px;
+        max-height: 95vh; /* Ajuste para móviles */
+    }
+
+    .app-header h1 {
+        font-size: 2em;
+    }
+
+    .header-icon {
+        font-size: 3em;
+    }
+
+    .mode-selector {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .satellite-input-group, .satellite-split-group {
+        grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .submit-btn {
+        min-width: unset; /* Elimina el ancho mínimo en móviles */
+        width: 100%; /* Ocupa todo el ancho */
+        padding: 12px 20px;
+        font-size: 1em;
+    }
+
+    .form-section h2 {
+        font-size: 1.5em;
+    }
+
+    .results-container p {
+        font-size: 1.1em;
+    }
+}
+
